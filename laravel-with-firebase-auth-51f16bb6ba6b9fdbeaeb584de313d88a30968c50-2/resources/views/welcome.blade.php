@@ -1,161 +1,271 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<title>Login V6</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="{{URL::asset('/images/ogrenci.jpg')}}"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{URL::asset('/css/btmin.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{URL::asset('/css/font.css')}}s">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{URL::asset('/css/util.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{URL::asset('/css/main.css')}}">
-<!--===============================================================================================-->
-</head>
-<body>
 
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100 p-t-85 p-b-20">
-				<form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
-          @csrf
-					<span class="login100-form-title p-b-70">
-						Hoşgeldiniz
-					</span>
-					<span class="login100-form-avatar">
-						<img src="images/ogrenci.jpg" alt="AVATAR">
-					</span>
+  <head>
 
-					<div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Enter username">
-					<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-          	<span class="focus-input100" data-placeholder="E-Mail"></span>
-          @error('email')
-                   <span class="invalid-feedback" role="alert">
-                     <strong>{{ $message }}</strong>
-                   </span>
-                 @enderror
-					</div>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 
-					<div class="wrap-input100 validate-input m-b-50" data-validate="Enter password">
-					<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-          	<span class="focus-input100" data-placeholder="Şifreniz"></span>
+    <title>Kocaeli Üniversitesi Başvuru Sitesi</title>
+<!--
 
-                      @error('password')
-                        <span class="invalid-feedback" role="alert">
-                          <strong>{{ $message }}</strong>
-                        </span>
-                      @enderror
-					</div>
+TemplateMo 548 Training Studio
 
-					<div class="container-login100-form-btn">
-            <button type="submit" class="login100-form-btn">
-                         {{ __('Login') }}
-              </button>
-					</div>
+https://templatemo.com/tm-548-training-studio
 
-					<ul class="login-more p-t-190">
-						<li class="m-b-8">
-							<span class="txt1">
-                Forgot Your Password?
-							</span>
+-->
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+
+    <link rel="stylesheet" href="assets/css/templatemo-training-studio.css">
+
+    </head>
+
+    <body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+      <div class="preloader-inner">
+        <span class="dot"></span>
+        <div class="dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
 
 
-              <a class="btn btn-link" href="/password/reset" style="text-decoration: none;">
-                            Reset Password
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="index.html" class="logo">Koceli<em> Üniversitesi</em></a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="#top" class=>Home</a></li>
+														    @if (Route::has('login'))
+                            <li class="scroll-to-section"><a href="{{ route('login') }}">Login</a></li>
+														@endif
+																 @if (Route::has('register'))
+                            <li class=""><a  href="{{ route('register') }}">Sign Up</a></li>
+																	@endif
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
                         </a>
-						</li>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
 
-						<li>
-							<span class="txt1">
-								Don’t have an account?
-							</span>
-
-							<a href="/register" class="txt2">
-								Sign up
-							</a>
-						</li>
-					</ul>
-				</form>
-			</div>
-		</div>
-	</div>
+    <!-- ***** Main Banner Area Start ***** -->
+    <div class="main-banner" id="top">
+        <img style="height:1000px;width:2280px;" src="/assets/images/kou.jpg"/>
 
 
-	<div id="dropDownSelect1"></div>
 
-<!--===============================================================================================-->
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/countdowntime/countdowntime.js"></script>
-<!--===============================================================================================-->
-	<script src="js/main.js"></script>
 
-      <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-      <script>
-      // Initialize Firebase
-      var firebaseConfig = {
-        apiKey: "AIzaSyCoROKp7nbcXqPP0YtA4fO3sPiVYVyi9pI",
-        authDomain: "laravel-auth-9a60c.firebaseapp.com",
-        projectId: "laravel-auth-9a60c",
-        storageBucket: "laravel-auth-9a60c.appspot.com",
-      messagingSenderId: "969104073456",
-      appId: "1:969104073456:web:5a843163dbf96cb9fd1835"
-      };
-      firebase.initializeApp(config);
-      var facebookProvider = new firebase.auth.FacebookAuthProvider();
-      var googleProvider = new firebase.auth.GoogleAuthProvider();
-      var facebookCallbackLink = '/login/facebook/callback';
-      var googleCallbackLink = '/login/google/callback';
-      async function socialSignin(provider) {
-        var socialProvider = null;
-        if (provider == "facebook") {
-          socialProvider = facebookProvider;
-          document.getElementById('social-login-form').action = facebookCallbackLink;
-        } else if (provider == "google") {
-          socialProvider = googleProvider;
-          document.getElementById('social-login-form').action = googleCallbackLink;
-        } else {
-          return;
-        }
-        firebase.auth().signInWithPopup(socialProvider).then(function(result) {
-          result.user.getIdToken().then(function(result) {
-            document.getElementById('social-login-tokenId').value = result;
-            document.getElementById('social-login-form').submit();
-          });
-        }).catch(function(error) {
-          // do error handling
-          console.log(error);
-        });
-      }
-      </script>
+    </div>
+    <!-- ***** Main Banner Area End ***** -->
 
-</body>
+    <!-- ***** Features Item Start ***** -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="section-heading">
+                        <h2>Başvuru  <em>Türleri</em></h2>
+
+
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ul class="features-items">
+                        <li class="feature-item">
+                            <div class="left-icon">
+                                <img src="assets/images/features-first-icon.png" alt="First One">
+                            </div>
+                            <div class="right-content">
+                                <h4>Yaz Okulu Başvurusu</h4>
+                                <p>Bir yıl sonunda yaz ve güz döneminde başarısız olunan derslerin tekrardan alınmak için verilen başvuru formu. </p>
+                                <a href="#" class="text-button">Discover More</a>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="left-icon">
+                                <img src="assets/images/features-first-icon.png" alt="second one">
+                            </div>
+                            <div class="right-content">
+                                <h4>Dgs Başvuru Formu</h4>
+                                <p>Dikey geçiş  sadece 2 yıllık meslek yüksekokulu mezunları ve mezun olabilecek durumdaki adaylar içindir</p>
+                                <a href="#" class="text-button">Discover More</a>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="left-icon">
+                                <img src="assets/images/features-first-icon.png" alt="third gym training">
+                            </div>
+                            <div class="right-content">
+                                <h4>Ders İntibakı Başvuru Formu</h4>
+                                <p>Ders intibakı; ders adı, ders kodu, dersin yarıyılı değişiklikleri, bir dersin başka bir ders ile değiştirilmesi, dersin kaldırılması ve yeni ders eklenmesi işlemleridir.</p>
+                                <a href="#" class="text-button">Discover More</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <ul class="features-items">
+                        <li class="feature-item">
+                            <div class="left-icon">
+                                <img src="assets/images/features-first-icon.png" alt="fourth muscle">
+                            </div>
+                            <div class="right-content">
+                                <h4>Çap Başvuru Formu</h4>
+                                <p>Çift Anadal Programı, herhangi bir üniversitede lisans düzeyinde eğitim gören öğrencilerin, aynı üniversitedeki başka bir bölüme kayıt olmasına ve eş zamanlı olarak ders almasına denir.</p>
+                                <a href="#" class="text-button">Discover More</a>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="left-icon">
+                                <img src="assets/images/features-first-icon.png" alt="training fifth">
+                            </div>
+                            <div class="right-content">
+                                <h4>Yatay Geçiş Başvuru Formu</h4>
+                                <p>Yatay geçiş, bir öğrencinin kayıtlı olduğu üniversite programından, başka bir üniversitenin benzer programına geçme işlemidir. Yatay Geçiş üniversiteler arasında yapıldığı gibi, üniversite içinde de yapılabilir.</p>
+                                <a href="#" class="text-button">Discover More</a>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Features Item End ***** -->
+
+    <!-- ***** Call to Action Start ***** -->
+    <section class="section" id="call-to-action">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="cta-content">
+
+                        <p>Başvuru Türlerini Görüntülemek ve Başvuruda Bulunmak İçin Sisteme Kayıt Olmak Gereklidir</p>
+                        <div class="main-button scroll-to-section">
+													 @if (Route::has('register'))
+                            <a href="{{ route('register') }}">Kayıt Ol</a>
+															@endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Call to Action End ***** -->
+
+    <!-- ***** Our Classes Start ***** -->
+
+    <!-- ***** Our Classes End ***** -->
+
+
+
+
+
+    <!-- ***** Contact Us Area Starts ***** -->
+    <section class="section" id="contact-us">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div id="map">
+                    <iframe src="https://www.google.com/maps/d/embed?mid=1-KFsPlpPskP39oFD-Y5PGwyvrEw&hl=tr&ehbc=2E312F"  width="100%" height="600px" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="contact-form">
+                        <form id="contact" action="" method="post">
+                          <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                              <fieldset>
+                                <input name="name" type="text" id="name" placeholder="Your Name*" required="">
+                              </fieldset>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                              <fieldset>
+                                <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email*" required="">
+                              </fieldset>
+                            </div>
+                            <div class="col-md-12 col-sm-12">
+                              <fieldset>
+                                <input name="subject" type="text" id="subject" placeholder="Subject">
+                              </fieldset>
+                            </div>
+                            <div class="col-lg-12">
+                              <fieldset>
+                                <textarea name="message" rows="6" id="message" placeholder="Message" required=""></textarea>
+                              </fieldset>
+                            </div>
+                            <div class="col-lg-12">
+                              <fieldset>
+                                <button type="submit" id="form-submit" class="main-button">Send Message</button>
+                              </fieldset>
+                            </div>
+                          </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Contact Us Area Ends ***** -->
+
+    <!-- ***** Footer Start ***** -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; 2021 Kocaeli Üniversitesi
+
+                    <a rel="nofollow" href="https://templatemo.com" class="tm-text-link" target="_parent"></a></p>
+
+                    <!-- You shall support us a little via PayPal to info@templatemo.com -->
+
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="assets/js/jquery-2.1.0.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="assets/js/popper.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="assets/js/scrollreveal.min.js"></script>
+    <script src="assets/js/waypoints.min.js"></script>
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="assets/js/imgfix.min.js"></script>
+    <script src="assets/js/mixitup.js"></script>
+    <script src="assets/js/accordions.js"></script>
+
+    <!-- Global Init -->
+    <script src="assets/js/custom.js"></script>
+
+  </body>
 </html>

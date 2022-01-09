@@ -1,45 +1,113 @@
 
-<!DOCTYPE html>
+
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Kocaeli Üniversitesi Başuruları</title>
+  <title>Kocaeli Üniversitesi Başvuruları</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css'><link rel="stylesheet" href="./style.css">
+
+  <script>
+        var fakülteObject = {
+          "Mühendislik Fakültesi": {
+            "Bilgisayar Mühendisliği":{},
+            "İnşaat Mühendisliği":{},
+            "Endüstri Mühendisliği":{},
+            "Makine Mühendisliği":{},
+            "Çevre Mühendisliği":{}
+          },
+          "Fen Edebiyat Fakültesi": {
+            "Biyoloji":{},
+            "Coğrafya":{},
+            "Fizik":{},
+            "Kimya":{},
+            "Matematik":{}
+          },
+          "Teknoloji Fakültesi": {
+            "Bilişim Sistemleri Mühendisliği":{},
+            "Biyomedikal Mühendisliği":{},
+            "Otomotiv Mühendisliği":{},
+            "Enerji Sistemleri Mühendisliği":{},
+            "Yazılım Mühendisliği":{}
+          },
+          "İletişim Fakültesi": {
+            "Reklamcılık":{},
+            "İletişim ve Tasarımı":{},
+            "Gazetecilik":{},
+            "Radyo ve Televizyon":{},
+            "Halkla İlişkiler":{}
+          },
+          "Eğitim Fakültesi": {
+            "Özel Eğitim Öğretmenliği":{},
+            "Temel Eğitim Öğretmenliği":{},
+            "Bilgisayar Öğretmenliği":{},
+            "Yabancı Dil Öğretmenliği":{},
+            "Güzel Sanatlar Öğretmenliği":{}
+          }
+        }
+        window.onload = function() {
+          var fakülteSel = document.getElementById("fakülte");
+          var bölümSel = document.getElementById("bölüm");
+          for (var x in fakülteObject) {
+            fakülteSel.options[fakülteSel.options.length] = new Option(x, x);
+          }
+          fakülteSel.onchange = function() {
+            //empty Chapters- and Topics- dropdowns
+            bölümSel.length = 1;
+            //display correct values
+            for (var y in fakülteObject[this.value]) {
+              bölümSel.options[bölümSel.options.length] = new Option(y, y);
+            }
+          }
+
+        }
+
+      </script>
+
+
 <<link href="{{URL::asset('/css/style.css')}}"  rel=stylesheet>
 </head>
 <body>
 <!-- partial:index.partial.html -->
 <div class='dashboard'>
-    <div class="dashboard-nav">
-        <header><a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a><a href="{{URL::asset('images/logo.png')}}"
-                                                                                   class="brand-logo"><i
-                class="fas fa-graduation-cap"></i> <span>BAŞVURULAR</span></a></header>
-        <nav class="dashboard-nav-list"><a href="#" class="dashboard-nav-item"><i class="fas fa-home"></i>
-            AnaSayfa </a><a
-                href="#" class="dashboard-nav-item active"><i class="fas fa-tachometer-alt"></i> Admin
-        </a><a
-                href="#" class="dashboard-nav-item"><i class="fas fa-file-upload"></i> Yüklemeler </a>
-            <div class='dashboard-nav-dropdown'><a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
-                    class="fas fa-file-alt"></i> Başvurular </a>
-                <div class='dashboard-nav-dropdown-menu'><a href="#"
+  <div class="dashboard-nav">
+      <header><a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a><a href="{{URL::asset('images/logo.png')}}"
+                                                                                 class="brand-logo"><i
+              class="fas fa-graduation-cap"></i> <span>BAŞVURULAR</span></a></header>
+      <nav class="dashboard-nav-list"><a href="anasayfa" class="dashboard-nav-item"><i class="fas fa-home"></i>
+          AnaSayfa </a><div class='dashboard-nav-dropdown'><a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="fas fa-file-alt"></i> Yüklemeler </a>
+                    <div class='dashboard-nav-dropdown-menu'>
+                        <a href="yazokuluupload" class="dashboard-nav-dropdown-item">Yaz Okulu Başvuru Yükleme</a>
+                        <a href="capupload" class="dashboard-nav-dropdown-item">ÇAP Başvurusu Yükleme</a>
+                        <a href="dgsupload" class="dashboard-nav-dropdown-item">DGS Başvurusu Yükleme</a>
+                        <a href="yatayupload" class="dashboard-nav-dropdown-item">Yatay Geçiş Başvurusu Yükleme</a>
+                        <a href="dersintibakupload" class="dashboard-nav-dropdown-item">Ders İntibakı Başvurusu Yükleme</a>
+                    </div>
+          <div class='dashboard-nav-dropdown'><a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
+                  class="fas fa-file-alt"></i> Başvurular </a>
+                  <div class='dashboard-nav-dropdown-menu'><a
 
-                  href="yazokulu" class="dashboard-nav-dropdown-item">Yaz Okulu Başvurusu</a><a
-                  href="capbasvuru" class="dashboard-nav-dropdown-item">ÇAP Başvurusu</a><a
-                  href="dgs" class="dashboard-nav-dropdown-item">DGS Başvurusu</a><a
-                  href="yataygecis" class="dashboard-nav-dropdown-item">Yatay Geçiş Başvurusu</a><a
-                  href="dersintibak" class="dashboard-nav-dropdown-item">Ders İntibakı Başvurusu</a></div>
-            </div>
-
-
-            <a href="#" class="dashboard-nav-item"><i class="fas fa-cogs"></i> Settings </a><a
-                    href="#" class="dashboard-nav-item"><i class="fas fa-user"></i> Profile </a>
-          <div class="nav-item-divider"></div>
-          <a
-                    href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i> Logout </a>
-        </nav>
-    </div>
+                    href="yazokulu" class="dashboard-nav-dropdown-item">Yaz Okulu Başvurusu</a><a
+                    href="capbasvuru" class="dashboard-nav-dropdown-item">ÇAP Başvurusu</a><a
+                    href="/dgs" class="dashboard-nav-dropdown-item">DGS Başvurusu</a><a
+                    href="/yataygecis" class="dashboard-nav-dropdown-item">Yatay Geçiş Başvurusu</a><a
+                    href="/dersintibak" class="dashboard-nav-dropdown-item">Ders İntibakı Başvurusu</a></div>
+                    <a href="#" class="dashboard-nav-item"><i class="fas fa-cogs"></i> Settings </a><a
+                            href="profil" class="dashboard-nav-item"><i class="fas fa-user"></i> Profile </a>
+        <div class="nav-item-divider"></div>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="{{ route('logout') }}"
+             onclick="event.preventDefault();
+                           document.getElementById('logout-form').submit();">
+              {{ __('Logout') }}
+          </a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+              @csrf
+          </form>
+            </li>
+      </nav>
+  </div>
     <div class='dashboard-app'>
         <header class='dashboard-toolbar'><a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a></header>
         <div class='dashboard-content'>
@@ -63,7 +131,8 @@
 <div class="card-body">
     <div class="card card-header bg-success">Kişisel Bilgiler</div>
 </br>
-<form id="addUser" class="form-inline" method="POST" action="">
+<form id="addUser" class="form-inline" method="POST" action="{{ route('dgsPDF') }}">
+  {{ csrf_field() }}
 
 <div class="form-group mb-2">
 <label for="name" class="sr-only">Name</label>
@@ -81,8 +150,14 @@ required autofocus>
 required autofocus>
 </div>
 <div class="form-group mx-sm-3 mb-2">
+<label for="numara" class="sr-only">Öğrenci Numarasi</label>
+<input id="numara" type="text" class="form-control" name="numara" placeholder="ÖĞRENCİ NUMARASI"
+required autofocus>
+</div>
+
+<div class="form-group mx-sm-3 mb-2">
 <label for="phonenum" class="sr-only">Phone Number</label>
-<input id="phonenum" type="number" class="form-control" name="phonenum" placeholder="Telefon Numarası"
+<input id="phonenum" type="text" class="form-control" name="phonenum" placeholder="Telefon Numarası"
 required autofocus>
 </div>
 
@@ -94,19 +169,17 @@ required autofocus>
 <div class="card-body">
   <div class="card card-header bg-success">Bölüm Bilgileri</div>
 </br>
+
 <div class="form-group mx-sm-3 mb-2">
+<select name="fakülte" id="fakülte" class="form-control">
+                  <option value="" selected="selected">Fakültenizi Seçin</option>
+                </select>
+                </div>
 
-<input id="numara" type="number" class="form-control" name="numara" placeholder="Öğrenci Numaranız"
-required autofocus>
-</div>
-  <div class="form-group mx-sm-3 mb-2">
-    <input id="fakülte" type="text" class="form-control" name="fakülte" placeholder="Bağlı olduğunuz fakülte"
-    required autofocus>
-  </div>
-  <div class="form-group mx-sm-3 mb-2">
-
-    <input id="bölüm" type="text" class="form-control" name="bölüm" placeholder="Bölümünüz"
-    required autofocus>
+                <div class="form-group mx-sm-3 mb-2">
+                <select name="bölüm" id="bölüm" class="form-control">
+                  <option value="" selected="selected">Bölümünüzü Seçin</option>
+                </select>
 
 </div>
 
@@ -122,20 +195,40 @@ required autofocus>
 required autofocus>
 </div>
 <div class="form-group mx-sm-3 mb-2">
+<select name="dgsfakülte" id="dgsfakülte" class="form-control">
+                  <option value="" selected="selected">Fakültenizi Seçin</option>
+                </select>
+                </div>
 
-<input id="dgsfakülte" type="text" class="form-control" name="dgsfakülte" placeholder="Fakülte "
-required autofocus>
+                <div class="form-group mx-sm-3 mb-2">
+                <select name="dgsbölüm" id="dgsbölüm" class="form-control">
+                  <option value="" selected="selected">Bölümünüzü Seçin</option>
+                </select>
+                <br><br>
 </div>
-  <div class="form-group mx-sm-3 mb-2">
-    <input id="dgsbölüm" type="text" class="form-control" name="dgsbölüm" placeholder="Bölüm"
-    required autofocus>
-  </div>
-
 
 </div>
-<button id="submitUser" type="button" class="btn btn-dark mb-2">Kaydet</button>
+<button id="submitUsexr" type="submit" class="btn btn-dark mb-2">Kaydet</button>
 </form>
 </div>
+<div class="card card-default">
+                  <div class="card-body">
+                  <div class="card card-header bg-success">Ek Belgeler</div>
+                    </br>
+                    <div class="form-group mx-sm-3 mb-2">
+                    <input type="file" id="files" multiple /><br /><br />
+
+<button id="send">Upload</button>
+
+<p id="uploading"></p>
+<progress value="0" max="100" id="progress"></progress>
+</div>
+                      
+
+      </div>
+
+
+                  </div>
 </div>
 <br>
 
@@ -202,8 +295,168 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-analytics.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.0/dist/sweetalert2.all.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-database.js"></script>
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-storage.js"></script>
 <script  src="{{ URL::asset('js/site.js') }}"></script>
 <script>
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyAkiW1OxH3fATENTTlG-VgyiQtuGUkLkB0",
+   authDomain: "yazlabprojeveritabani.firebaseapp.com",
+   databaseURL: "https://yazlabprojeveritabani-default-rtdb.europe-west1.firebasedatabase.app",
+   projectId: "yazlabprojeveritabani",
+   storageBucket: "yazlabprojeveritabani.appspot.com",
+   messagingSenderId: "811704115578",
+   appId: "1:811704115578:web:bafba929c9ccbaa1a0b6c3",
+   measurementId: "G-E3XY48Y3P7"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+</script>
+
+<script>
+var files = [];
+document.getElementById("files").addEventListener("change", function(e) {
+  files = e.target.files;
+  for (let i = 0; i < files.length; i++) {
+    console.log(files[i]);
+  }
+});
+
+document.getElementById("send").addEventListener("click", function() {
+  //checks if files are selected
+  if (files.length != 0) {
+    //Loops through all the selected files
+    for (let i = 0; i < files.length; i++) {
+      //create a storage reference
+      var storage = firebase.storage().ref('Word-Excel/' + files[i].name);
+
+      //upload file
+      var upload = storage.put(files[i]);
+
+      //update progress bar
+      upload.on(
+        "state_changed",
+        function progress(snapshot) {
+          var percentage =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          document.getElementById("progress").value = percentage;
+        },
+
+        function error() {
+          alert("error uploading file");
+        },
+
+        function complete() {
+          document.getElementById(
+            "uploading"
+          ).innerHTML += `${files[i].name} upoaded <br />`;
+        }
+      );
+    }
+  } else {
+    alert("No file chosen");
+  }
+});
+document.getElementById("send").addEventListener("click", function() {
+  //checks if files are selected
+  if (files.length != 0) {
+    //Loops through all the selected files
+    for (let i = 0; i < files.length; i++) {
+      //create a storage reference
+      var database = firebase.database().ref('Word-Excel/' + files[i].name);
+
+      //upload file
+      var upload = database.put(files[i]);
+
+      //update progress bar
+      upload.on(
+        "state_changed",
+        function progress(snapshot) {
+          var percentage =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          document.getElementById("progress").value = percentage;
+        },
+
+        function error() {
+          alert("error uploading file");
+        },
+
+        function complete() {
+          document.getElementById(
+            "uploading"
+          ).innerHTML += `${files[i].name} upoaded <br />`;
+        }
+      );
+    }
+  } else {
+    alert("No file chosen");
+  }
+});
+
+
+</script>
+<script>
+var fakülteObject = {
+  "Mühendislik Fakültesi": {
+    "Bilgisayar Mühendisliği":{},
+    "İnşaat Mühendisliği":{},
+    "Endüstri Mühendisliği":{},
+    "Makine Mühendisliği":{},
+    "Çevre Mühendisliği":{}
+  },
+  "Fen Edebiyat Fakültesi": {
+    "Biyoloji":{},
+    "Coğrafya":{},
+    "Fizik":{},
+    "Kimya":{},
+    "Matematik":{}
+  },
+  "Teknoloji Fakültesi": {
+    "Bilişim Sistemleri Mühendisliği":{},
+    "Biyomedikal Mühendisliği":{},
+    "Otomotiv Mühendisliği":{},
+    "Enerji Sistemleri Mühendisliği":{},
+    "Yazılım Mühendisliği":{}
+  },
+  "İletişim Fakültesi": {
+    "Reklamcılık":{},
+    "İletişim ve Tasarımı":{},
+    "Gazetecilik":{},
+    "Radyo ve Televizyon":{},
+    "Halkla İlişkiler":{}
+  },
+  "Eğitim Fakültesi": {
+    "Özel Eğitim Öğretmenliği":{},
+    "Temel Eğitim Öğretmenliği":{},
+    "Bilgisayar Öğretmenliği":{},
+    "Yabancı Dil Öğretmenliği":{},
+    "Güzel Sanatlar Öğretmenliği":{}
+  }
+}
+window.onload = function() {
+  var fakülteSel = document.getElementById("fakülte");
+  var bölümSel = document.getElementById("bölüm");
+
+  for (var x in fakülteObject) {
+    fakülteSel.options[fakülteSel.options.length] = new Option(x, x);
+  }
+  fakülteSel.onchange = function() {
+    //empty Chapters- and Topics- dropdowns
+    bölümSel.length = 1;
+    //display correct values
+    for (var y in fakülteObject[this.value]) {
+      bölümSel.options[bölümSel.options.length] = new Option(y, y);
+    }
+  }
+
+}
+
 // Initialize Firebase
 var config = {
 apiKey: "{{ config('services.firebase.api_key') }}",

@@ -37,7 +37,7 @@
 
           @csrf
           <span class="login100-form-title p-b-70">
-
+         Kullanıcı Kayıt
           </span>
           <span class="login100-form-avatar">
             <img src="images/ogrenci.jpg" alt="AVATAR">
@@ -68,7 +68,7 @@
                      @enderror
                    </div>
                  </div>
-							
+
 
 
 
@@ -148,8 +148,8 @@
         authDomain: "laravel-auth-9a60c.firebaseapp.com",
         projectId: "laravel-auth-9a60c",
         storageBucket: "laravel-auth-9a60c.appspot.com",
-      messagingSenderId: "969104073456",
-      appId: "1:969104073456:web:5a843163dbf96cb9fd1835"
+        messagingSenderId: "969104073456",
+        appId: "1:969104073456:web:5a843163dbf96cb9fd1835"
       };
       firebase.initializeApp(config);
       var facebookProvider = new firebase.auth.FacebookAuthProvider();
